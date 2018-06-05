@@ -1,0 +1,18 @@
+{
+    "extends": ["bambi/native"],
+    "rules": {
+      "prettier/prettier": ["error",{ "printWidth": 120 }],
+      "flowtype/no-types-missing-file-annotation": "error",
+      "promise/avoid-new": "off",
+      "no-unused-vars": "error",
+      "no-console": [
+        "error",
+        {
+          "allow": ["warn", "error", "ignoredYellowBox"]
+        }
+      ]
+    },
+    "globals": {
+      "__dirname": true
+    }
+  }
