@@ -6,7 +6,6 @@
 
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import ElementList from "hnreader/src/components/elementList";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\nCmd+D or shake for dev menu",
@@ -36,14 +35,7 @@ type PropsType = $Exact<{}>;
 
 class App extends Component<PropsType> {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <ElementList />
-      </View>
-    );
+    return <View style={styles.container} />;
   }
 }
 
