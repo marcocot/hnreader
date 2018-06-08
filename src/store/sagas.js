@@ -1,42 +1,37 @@
 // @flow
 
-import createSagaMiddleware, { takeEvery } from "redux-saga";
+import createSagaMiddleware from "redux-saga";
 import type { Saga } from "redux-saga";
-import { actionCreators as actions, NEW_STORIES_LOAD } from "hnreader/src/store/actions";
-import { call, put, all } from "redux-saga/effects";
-import { LOAD_ITEM } from "./actions";
+import { actionCreators as actions, TOP_STORIES_LOAD } from "hnreader/src/store/actions";
+import { call, put, all, takeEvery } from "redux-saga/effects";
 
 export const sagaMiddleware = createSagaMiddleware();
 
-function* fetchNewstories(): Saga<any> {
-  yield put(actions.setLoading(true));
-  yield put(actions.newStoriesLoading());
+function* fetchTopStories(): Saga<any> {
+  yield put(actions.topStoriesLoading());
 
   const body = yield call(fetch, "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty");
   const content = yield body.json();
-  yield all(
+
+  const stories = yield all(
     content.slice(0, 15).map(id => {
-      return put(actions.loadItem(id));
+      return call(fetchItem, id);
     })
   );
 
-  yield put(actions.setLoading(false));
+  yield put(actions.topStoriesLoaded(stories));
 }
 
-function* fetchItem(action: Object): Saga<ItemType> {
-  const body = yield call(fetch, `https://hacker-news.firebaseio.com/v0/item/${action.id}.json`);
+function* fetchItem(id: string): Saga<ItemType> {
+  const body = yield call(fetch, `https://hacker-news.firebaseio.com/v0/item/${id}.json`);
   const content = yield body.json();
-  yield put(actions.itemLoaded(content));
+  return content;
 }
 
 export function* watchForNewStories(): Saga<any> {
-  yield takeEvery(NEW_STORIES_LOAD, fetchNewstories);
-}
-
-export function* watchForLoadItem(): Saga<ItemType> {
-  yield takeEvery(LOAD_ITEM, fetchItem);
+  yield takeEvery(TOP_STORIES_LOAD, fetchTopStories);
 }
 
 export function* allSagas(): Saga<any> {
-  yield all([watchForNewStories(), watchForLoadItem()]);
+  yield all([watchForNewStories()]);
 }

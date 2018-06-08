@@ -5,12 +5,8 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\nCmd+D or shake for dev menu",
-  android: "Double tap R on your keyboard to reload,\nShake or press menu button for dev menu"
-});
+import { StyleSheet, View } from "react-native";
+import StoriesList from "hnreader/src/components/StoriesList";
 
 const styles = StyleSheet.create({
   container: {
@@ -35,7 +31,11 @@ type PropsType = $Exact<{}>;
 
 class App extends Component<PropsType> {
   render() {
-    return <View style={styles.container} />;
+    return (
+      <View style={styles.container}>
+        <StoriesList />
+      </View>
+    );
   }
 }
 

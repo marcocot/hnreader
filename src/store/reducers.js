@@ -1,15 +1,17 @@
 // @flow
 
-import { ITEM_LOADED, SET_LOADING } from "hnreader/src/store/actions";
+import { TOP_STORIES_LOADED } from "hnreader/src/store/actions";
 
 export type StateType = $Exact<{
   stories: Array<ItemType>,
   isLoading: boolean
 }>;
 
-type LoadItemType = $Exact<{
-  type: "ITEM_LOADED",
-  item: ItemType
+type TopStoriesLoadedType = $Exact<{
+  type: "TOP_STORIES_LOADED",
+  payload: {
+    stories: Array<ItemType>
+  }
 }>;
 
 type SetLoadingType = $Exact<{
@@ -17,7 +19,7 @@ type SetLoadingType = $Exact<{
   value: boolean
 }>;
 
-type BaseActionType = LoadItemType | SetLoadingType;
+type BaseActionType = TopStoriesLoadedType | SetLoadingType;
 
 const initialState: StateType = {
   stories: [],
@@ -26,12 +28,8 @@ const initialState: StateType = {
 
 const reducer = function(state: StateType = initialState, action: BaseActionType) {
   switch (action.type) {
-    case ITEM_LOADED:
-      state.stories.push(action.item);
-      return { ...state };
-    case SET_LOADING:
-      state.isLoading = action.value;
-      return { ...state };
+    case TOP_STORIES_LOADED:
+      return Object.assign({}, state, { stories: action.payload.stories });
     default:
       return {
         ...state
