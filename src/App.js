@@ -1,40 +1,23 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+// @flow
 
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import styled, { ThemeProvider } from "styled-components";
+import Theme from "hnreader/src/theme";
 import StoriesList from "hnreader/src/components/StoriesList";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
-});
+const AppContainer = styled.View`
+  flex: 1;
+  margin-top: 35;
+`;
 
-type PropsType = $Exact<{}>;
-
-class App extends Component<PropsType> {
+class App extends Component<void> {
   render() {
     return (
-      <View style={styles.container}>
-        <StoriesList />
-      </View>
+      <AppContainer>
+        <ThemeProvider theme={Theme}>
+          <StoriesList />
+        </ThemeProvider>
+      </AppContainer>
     );
   }
 }
