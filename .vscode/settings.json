@@ -4,5 +4,9 @@
     "javascript.format.enable": false,
     "prettier.eslintIntegration": true,
     "eslint.packageManager": "yarn",
-    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+    "java.configuration.updateBuildConfiguration": "disabled"
 }

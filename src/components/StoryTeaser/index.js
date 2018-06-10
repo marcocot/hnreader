@@ -6,7 +6,7 @@ import { TouchableOpacity } from "react-native";
 
 type PropsType = $Exact<{
   item: ItemType,
-  onClick?: (item: ItemType) => void
+  onPress: (item: ItemType) => void
 }>;
 
 const TeaserOuterContainer = styled.View`
@@ -38,20 +38,14 @@ const SubtitleText = styled.Text`
 `;
 
 class StoryTeaser extends React.PureComponent<PropsType> {
-  _getSubtitle(item: ItemType): string {
-    return `${item.score} | ${item.by}`;
-  }
-
-  _onClick = () => {
-    if (this.props.onClick) {
-      this.props.onClick(this.props.item);
-    }
+  onPress = () => {
+    this.props.onPress(this.props.item);
   };
 
   render() {
     const { item } = this.props;
     return (
-      <TouchableOpacity onPress={this.props.onClick}>
+      <TouchableOpacity onPress={this.onPress}>
         <TeaserOuterContainer>
           <TeaserContainer>
             <TitleText>{item.title}</TitleText>

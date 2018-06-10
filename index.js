@@ -1,19 +1,14 @@
 // @flow
 
-import React from "react";
-import { AppRegistry } from "react-native";
-import { Provider } from "react-redux";
+import { Navigation } from "react-native-navigation";
 import store from "hnreader/src/store";
-import App from "hnreader/src/App";
+import { registerScreens } from "./src/Screens";
 
-class RootComponent extends React.PureComponent<void> {
-  render() {
-    return (
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+registerScreens(store);
+
+Navigation.startSingleScreenApp({
+  screen: {
+    screen: "hnreader.HomeScreen",
+    title: "HNReader"
   }
-}
-
-AppRegistry.registerComponent("hnreader", () => RootComponent);
+});

@@ -8,7 +8,8 @@ import StoriesList from "./StoriesList.component";
 
 type PropsType = $Exact<{
   stories?: Array<ItemType>,
-  loadNewStories: () => void
+  loadNewStories: () => void,
+  onPress: (item: ItemType) => void
 }>;
 
 class StoriesListContainer extends React.Component<PropsType> {
@@ -17,7 +18,7 @@ class StoriesListContainer extends React.Component<PropsType> {
   }
 
   render() {
-    return <StoriesList items={this.props.stories} />;
+    return <StoriesList onPress={this.props.onPress} items={this.props.stories} />;
   }
 }
 
