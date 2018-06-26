@@ -4630,9 +4630,9 @@ react-is@^16.3.1:
   version "16.4.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.0.tgz#cc9fdc855ac34d2e7d9d2eb7059bbc240d35ffcf"
 
-react-native-navigation@^1.1.471:
-  version "1.1.471"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.471.tgz#8ab400f3047d4a3bccd3af232e44a7a1cd5d3f37"
+react-native-navigation@^1.1.473:
+  version "1.1.473"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.473.tgz#f0f8c6d9d2c88b120bab1d20b73860f3a0c3c92f"
   dependencies:
     lodash "4.x.x"
 
