@@ -5,6 +5,8 @@
       "flowtype/no-types-missing-file-annotation": "error",
       "promise/avoid-new": "off",
       "no-unused-vars": "error",
+      "promise/catch-or-return": "off",
+      "promise/always-return": "off",
       "no-console": [
         "error",
         {

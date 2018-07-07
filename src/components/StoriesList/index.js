@@ -30,4 +30,7 @@ const mapDispatchToProps = (dispatch: Function) => ({
   loadNewStories: () => dispatch(actions.loadTopStories())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoriesListContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoriesListContainer);

@@ -1,5 +1,6 @@
 // @flow
 
+/* eslint no-unused-vars: off */
 type ItemType = {
   by: string,
   descendants: number,
